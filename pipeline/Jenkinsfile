@@ -1,0 +1,7 @@
+node()
+{
+    stage('ENV')
+    {
+        sh("env | sort -n")
+    }
+}
