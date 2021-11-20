@@ -24,9 +24,9 @@ pipelineJob("${build_root}/${gitlabSourceBranch}/main-pipeline") {
         cpsScm {
             scm {
                 git {
-                    remote { url("${REPO_URL}") }
+                    remote { url("${gitlabSourceRepoHttpUrl}") }
                     branches("${gitlabSourceBranch}")
-                    scriptPath("${SCRIPT_PATH}")
+                    scriptPath("Jenkinsfile")
                     extensions { }  // required as otherwise it may try to tag the repo, which you may not want
                 }
             }
