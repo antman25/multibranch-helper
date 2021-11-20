@@ -3,9 +3,11 @@ node()
     //print("gitlabSourceBranch = ${env.gitlabSourceBranch}")
     //print("ENV = ${env.getEnvironment()}")
     //def source_branch = env.getEnvironment().getOrDefault("BRANCH_NAME", "main")
-    def build_root = params.getOrDefault("JOB_ROOT", "/UnknownJobRoot")
+
     def repo = env.getEnvironment().getOrDefault("gitlabSourceRepoHttpUrl", "NOTSET")
-    def source_branch = env.getEnvironment().getOrDefault("gitlabSourceBranch", "main")
+    def source_repo = env.getEnvironment().getOrDefault("gitlabSourceRepoName", "NOTSET")
+    def source_branch = env.getEnvironment().getOrDefault("gitlabSourceBranch", "NOTSET")
+    def build_root = "pipeline-${source_repo}"
 
     stage ("ENV Dump")
     {
