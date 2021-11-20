@@ -14,13 +14,16 @@ pipelineJob("${JOB_ROOT}/branch-cleanup") {
         env('REPO_URL', "${REPO_URL}")
         keepBuildVariables(true)
     }*/
-    pipelineTriggers {
-        triggers {
-            cron {
-                spec("H/5 * * * * ")
+    properties {
+        pipelineTriggers {
+            triggers {
+                cron {
+                    spec("H/5 * * * * ")
+                }
             }
         }
     }
+
 
     definition {
         cpsScm {
