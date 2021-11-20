@@ -15,6 +15,7 @@ void processJob(Item job){
 
 void processFolder(Item folder){
     folder.getItems().each{
+        println("Folder: ${folder.name}")
         if(it instanceof Folder){
             processFolder(it)
         }else{
