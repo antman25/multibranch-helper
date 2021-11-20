@@ -1,19 +1,10 @@
 def build_root = "/pipeline-${gitlabSourceRepoName}"
 
 folder("${build_root}")
-//print("Params Build Root: ${env}")
-print("Building Folder ${build_root}/${gitlabSourceBranch}")
 folder("${build_root}/${gitlabSourceBranch}")
-
-
-print("Making job - ${build_root}/${gitlabSourceBranch}/main-pipeline")
 pipelineJob("${build_root}/${gitlabSourceBranch}/main-pipeline") {
 
     description("Pipeline for ${gitlabSourceRepoName}")
-
-    /*parameters {
-        stringParam('SOURCE_BRANCH', '', 'build this branch')
-    }*/
 
     environmentVariables {
         env('SOURCE_BRANCH', "${gitlabSourceBranch}")
