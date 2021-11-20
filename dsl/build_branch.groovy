@@ -5,8 +5,8 @@ print("Building Folder ${JOB_ROOT}/${gitlabSourceBranch}")
 folder("${JOB_ROOT}/${gitlabSourceBranch}")
 
 
-print("Making job - ${JOB_ROOT}/${gitlabSourceBranch}/seed-job")
-pipelineJob("${JOB_ROOT}/${gitlabSourceBranch}/seed-job") {
+print("Making job - ${JOB_ROOT}/${gitlabSourceBranch}/main-pipeline")
+pipelineJob("${JOB_ROOT}/${gitlabSourceBranch}/main-pipeline") {
 
     description("Pipeline for ${REPO_URL}")
 

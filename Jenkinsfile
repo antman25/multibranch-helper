@@ -49,7 +49,7 @@ node()
             param_array.add([$class: 'StringParameterValue', name: k, value: v])
         }*/
         print("Sending Source Branch: ${source_branch}")
-        build job: "${build_root}/${gitlabSourceBranch}/build-master"
+        build job: "${build_root}/${gitlabSourceBranch}/main-pipeline"
               parameters: [string(name: 'SOURCE_BRANCH', value: source_branch)]
     }
 
