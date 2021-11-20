@@ -5,6 +5,7 @@ pipelineJob("${JOB_ROOT}/branch-cleanup") {
 
     environmentVariables {
         env('JOB_ROOT', "${JOB_ROOT}")
+        env('REPO_URL', "${REPO_URL}")
         keepBuildVariables(true)
     }
 
