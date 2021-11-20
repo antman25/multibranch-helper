@@ -35,9 +35,10 @@ node ()
     stage('Cleanup')
     {
         def jen = Jenkins.instance
-        def root = jen.getItem("${JOB_ROOT}", null)
-        print("Root: ${root}")
-        root.each {
+        //def root = jen.getItem("${JOB_ROOT}", null)
+        def all_root_items = jen.getItems()
+        print("Root: ${all_root_items}")
+        all_root_items.each {
             print("iterator name: ${it.name}")
             if(it instanceof Folder){
                 print("Branch Folder: ${it.name}")
