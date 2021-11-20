@@ -63,14 +63,14 @@ node ()
     stage('Cleanup')
     {
         def active_branches = getRemoteBranches("${REPO_URL}")
-        print ("Active Branches")
+        print ("Active Branches: ${active_branches}")
 
         def jen = Jenkins.instance
         def root = jen.getItemByFullName("${JOB_ROOT}", Folder)
-        print("root: ${root}")
+        //print("root: ${root}")
 
         def all_root_items = root.getItems()
-        print("All Top level Jobs: ${all_root_items}")
+        //print("All Top level Jobs: ${all_root_items}")
         all_root_items.each {
             if(it instanceof Folder){
                 print("Folder: ${it.name}")
