@@ -36,6 +36,7 @@ node ()
     {
         def jen = Jenkins.instance
         def root = jen.getItem("${JOB_ROOT}/")
+        print("Root: ${root}")
         root.each {
             print("iterator name: ${it.name}")
             if(it instanceof Folder){
