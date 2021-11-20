@@ -1,6 +1,6 @@
 def build_root = "/pipeline-${gitlabSourceRepoName}"
 
-def build = Thread.currentThread().executable
+
 def test_script_path = build.buildVariableResolver.resolve("SCRIPT_PATH")
 print("Test path: ${test_script_path}")
 
