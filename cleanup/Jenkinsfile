@@ -36,6 +36,11 @@ node ()
     {
         def jen = Jenkins.instance
         def root = jen.getItem("${JOB_ROOT}")
+        root.each {
+            if(it instanceof Folder){
+                print("Branch Folder: ${it.name}")
+            }
+        }
         /*jen.getItems().each{
             if(it instanceof Folder){
                 processFolder(it)
