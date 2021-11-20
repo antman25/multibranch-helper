@@ -1,8 +1,3 @@
-import hudson.model.*
-import hudson.AbortException
-import hudson.console.HyperlinkNote
-import java.util.concurrent.CancellationException
-
 def build_root = "/pipeline-${gitlabSourceRepoName}"
 
 
