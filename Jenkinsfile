@@ -36,8 +36,6 @@ node()
                  removedViewAction: 'IGNORE',
                  lookupStrategy: 'SEED_JOB',
                  additionalParameters: params
-                 /*jobDsl scriptText: "folder('${build_root}')"
-                 jobDsl scriptText: "folder('${build_root}/${gitlabSourceBranch}')"*/
             }
         }
 

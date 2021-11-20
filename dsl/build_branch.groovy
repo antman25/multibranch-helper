@@ -1,4 +1,3 @@
-
 folder("${JOB_ROOT}")
 //print("Params Build Root: ${env}")
 print("Building Folder ${JOB_ROOT}/${gitlabSourceBranch}")
