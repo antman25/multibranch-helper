@@ -34,13 +34,14 @@ node()
             {
                  //def extra_params = params
                  //extra_params['JOB_ROOT'] = build_root
-
-                 jobDsl targets: ["dsl/build_branch.groovy",
-                                  "dsl/build_cleanup.groovy"].join('\n'),
-                 removedJobAction: 'IGNORE',
-                 removedViewAction: 'IGNORE',
-                 lookupStrategy: 'SEED_JOB',
-                 additionalParameters: params
+                 withEnv(["SCRIPT_PATH=${SCRIPT_PATH}"]) {
+                     jobDsl targets: ["dsl/build_branch.groovy",
+                                      "dsl/build_cleanup.groovy"].join('\n'),
+                     removedJobAction: 'IGNORE',
+                     removedViewAction: 'IGNORE',
+                     lookupStrategy: 'SEED_JOB',
+                     additionalParameters: params
+                 }
             }
         }
 
