@@ -33,6 +33,13 @@ node ()
         print("Params: ${params}")
     }
 
+    stage("Git Clone")
+    {
+        checkout scm
+    }
+
+
+
     stage('Cleanup')
     {
         def active_branches = git_helper.getRemoteBranches()
