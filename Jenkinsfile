@@ -27,6 +27,7 @@ node()
             }
         }
 
+
         stage ('JobDSL')
         {
             gitlabCommitStatus(name: "dsl")
