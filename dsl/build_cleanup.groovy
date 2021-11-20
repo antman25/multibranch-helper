@@ -3,10 +3,10 @@ pipelineJob("${JOB_ROOT}/branch-cleanup") {
 
     description("Cleanup job for ${JOB_ROOT}")
 
-    /*environmentVariables {
-        env('SOURCE_BRANCH', "${gitlabSourceBranch}")
+    environmentVariables {
+        env('JOB_ROOT', "${JOB_ROOT}")
         keepBuildVariables(true)
-    }*/
+    }
 
     definition {
         cpsScm {
