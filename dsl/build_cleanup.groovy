@@ -18,7 +18,7 @@ pipelineJob("${JOB_ROOT}/branch-cleanup") {
         pipelineTriggers {
             triggers {
                 cron {
-                    spec("H/5 * * * * ")
+                    spec("H/1 * * * * ")
                 }
             }
         }
