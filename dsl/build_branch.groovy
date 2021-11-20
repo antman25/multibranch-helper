@@ -6,7 +6,8 @@ import java.util.concurrent.CancellationException
 def build_root = "/pipeline-${gitlabSourceRepoName}"
 
 
-def test_script_path = build.buildVariableResolver.resolve("SCRIPT_PATH")
+def test_script_path = System.getenv("SCRIPT_PATH")
+
 print("Test path: ${test_script_path}")
 
 folder("${build_root}")
@@ -26,7 +27,7 @@ pipelineJob("${build_root}/${gitlabSourceBranch}/main-pipeline") {
                 git {
                     remote { url("${gitlabSourceRepoHttpUrl}") }
                     branches("${gitlabSourceBranch}")
-                    scriptPath("${SCRIPT_PATH}")
+                    scriptPath("${test_script_path}")
                     extensions { }  // required as otherwise it may try to tag the repo, which you may not want
                 }
             }
