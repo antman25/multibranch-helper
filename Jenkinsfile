@@ -5,8 +5,8 @@ node()
     //print("gitlabSourceBranch = ${env.gitlabSourceBranch}")
     //print("ENV = ${env.getEnvironment()}")
     //def source_branch = env.getEnvironment().getOrDefault("BRANCH_NAME", "main")
-    def build_root = '/build-root-proto'
-    def repo = 'http://gitlab.antlinux.local:30080/antman/pipeline-proto.git'
+    def build_root = params.getOrDefault("JOB_ROOT", "/UnknownJobRoot")
+    def repo = params.getOrDefault("REPO_URL", "NOTSET")
     def source_branch = env.getEnvironment().getOrDefault("gitlabSourceBranch", "main")
     stage ("ENV Dump")
     {
@@ -29,8 +29,8 @@ node()
 
         stage ('Create Branch')
         {
-             def extra_params = params
-             extra_params['HELPER_ROOT_PATH'] = build_root
+             //def extra_params = params
+             //extra_params['JOB_ROOT'] = build_root
 
              jobDsl targets: ["dsl/build_root.groovy"].join('\n'),
              removedJobAction: 'IGNORE',
