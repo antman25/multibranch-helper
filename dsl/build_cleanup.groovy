@@ -4,11 +4,16 @@ pipelineJob("${JOB_ROOT}/branch-cleanup") {
 
     description("Cleanup job for ${JOB_ROOT}")
 
-    environmentVariables {
+    parameters {
+        stringParam('JOB_ROOT', "${JOB_ROOT}", 'JOB_ROOT')
+        stringParam('REPO_URL', "${REPO_URL}", 'REPO_URL')
+    }
+
+    /*environmentVariables {
         env('JOB_ROOT', "${JOB_ROOT}")
         env('REPO_URL', "${REPO_URL}")
         keepBuildVariables(true)
-    }
+    }*/
 
     definition {
         cpsScm {
