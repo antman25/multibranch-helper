@@ -7,39 +7,35 @@ import hudson.scm.*
 import hudson.tasks.*
 import com.cloudbees.hudson.plugins.folder.*
 
+void processJob(Item job){
+  if (job.name ==~ /.*None$/){
+    println job.name
+  }
+}
 
-node ()
-{
-
-
-    jen = Jenkins.instance
-
-    jen.getItems().each{
+void processFolder(Item folder){
+    folder.getItems().each{
         if(it instanceof Folder){
             processFolder(it)
         }else{
             processJob(it)
         }
     }
+}
 
-    void processJob(Item job){
-      if (job.name ==~ /.*None$/){
-        println job.name
-      }
-    }
+node ()
+{
+    stage('Cleanup')
+    {
+        def jen = Jenkins.instance
 
-    void processFolder(Item folder){
-        folder.getItems().each{
+        jen.getItems().each{
             if(it instanceof Folder){
                 processFolder(it)
             }else{
                 processJob(it)
             }
         }
-    }
-    stage('Cleanup')
-    {
-        echo "Cleanup"
     }
 
 }
