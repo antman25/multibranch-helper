@@ -35,7 +35,7 @@ node ()
     stage('Cleanup')
     {
         def jen = Jenkins.instance
-        def root = jen.getItem("${JOB_ROOT}/")
+        def root = jen.getItem("${JOB_ROOT}", null)
         print("Root: ${root}")
         root.each {
             print("iterator name: ${it.name}")
