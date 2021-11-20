@@ -14,43 +14,41 @@ node()
         print("Params: ${params}")
         print("Source Branch: ${source_branch}")
     }
+    gitlabBuilds(builds: ["git", "dsl","build"]) {
 
-
-    stage('Git Clone')
-    {
-        /*checkout([$class: 'GitSCM',
-                branches: [[name: source_branch]],
-                extensions: [],
-                userRemoteConfigs:
-                [[credentialsId: 'jenkins_ssh', url: repo]]])*/
+        stage('Git Clone')
+        {
+            gitlabCommitStatus(name: "git")
+            {
                 checkout scm
+            }
+        }
+
+        stage ('JobDSL')
+        {
+            gitlabCommitStatus(name: "dsl")
+            {
+                 //def extra_params = params
+                 //extra_params['JOB_ROOT'] = build_root
+
+                 jobDsl targets: ["dsl/build_branch.groovy"].join('\n'),
+                 removedJobAction: 'IGNORE',
+                 removedViewAction: 'IGNORE',
+                 lookupStrategy: 'SEED_JOB',
+                 additionalParameters: params
+                 /*jobDsl scriptText: "folder('${build_root}')"
+                 jobDsl scriptText: "folder('${build_root}/${gitlabSourceBranch}')"*/
+            }
+        }
+
+        stage('Run Pipeline')
+        {
+            gitlabCommitStatus(name: "build")
+            {
+                print("Sending Source Branch: ${source_branch}")
+                build job: "${build_root}/${gitlabSourceBranch}/main-pipeline"
+                      parameters: [string(name: 'SOURCE_BRANCH', value: source_branch)]
+            }
+        }
     }
-
-    stage ('Create Branch')
-    {
-         //def extra_params = params
-         //extra_params['JOB_ROOT'] = build_root
-
-         jobDsl targets: ["dsl/build_branch.groovy"].join('\n'),
-         removedJobAction: 'IGNORE',
-         removedViewAction: 'IGNORE',
-         lookupStrategy: 'SEED_JOB',
-         additionalParameters: params
-         /*jobDsl scriptText: "folder('${build_root}')"
-         jobDsl scriptText: "folder('${build_root}/${gitlabSourceBranch}')"*/
-
-    }
-
-    stage('Run Pipeline')
-    {
-        def param_array = []
-        /*env.each { k,v ->
-            print("Key: ${k} Val: ${v}")
-            param_array.add([$class: 'StringParameterValue', name: k, value: v])
-        }*/
-        print("Sending Source Branch: ${source_branch}")
-        build job: "${build_root}/${gitlabSourceBranch}/main-pipeline"
-              parameters: [string(name: 'SOURCE_BRANCH', value: source_branch)]
-    }
-
 }
