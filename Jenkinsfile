@@ -4,8 +4,9 @@ node()
     //print("ENV = ${env.getEnvironment()}")
     //def source_branch = env.getEnvironment().getOrDefault("BRANCH_NAME", "main")
     def build_root = params.getOrDefault("JOB_ROOT", "/UnknownJobRoot")
-    def repo = params.getOrDefault("REPO_URL", "NOTSET")
+    def repo = env.getEnvironment().getOrDefault("gitlabSourceRepoHttpUrl", "NOTSET")
     def source_branch = env.getEnvironment().getOrDefault("gitlabSourceBranch", "main")
+
     stage ("ENV Dump")
     {
         sh ("env | sort -n")
