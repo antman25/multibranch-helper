@@ -34,7 +34,7 @@ node()
             {
                  //def extra_params = params
                  //extra_params['JOB_ROOT'] = build_root
-                 withEnv(["SCRIPT_PATH=${SCRIPT_PATH}"]) {
+                 withEnv(["SCRIPT_PATH=${script_path}"]) {
                      jobDsl targets: ["dsl/build_branch.groovy",
                                       "dsl/build_cleanup.groovy"].join('\n'),
                      removedJobAction: 'IGNORE',
