@@ -63,6 +63,7 @@ node ()
     stage('Cleanup')
     {
         def active_branches = getRemoteBranches("${REPO_URL}")
+        print ("Active Branches")
 
         def jen = Jenkins.instance
         def root = jen.getItemByFullName("${JOB_ROOT}", Folder)
