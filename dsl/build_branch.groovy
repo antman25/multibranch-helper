@@ -1,16 +1,14 @@
-def build_root = '/build-root-proto'
-folder("${build_root}")
+
+folder("${JOB_ROOT}")
 //print("Params Build Root: ${env}")
-print("Building Folder ${build_root}/${gitlabSourceBranch}")
-folder("${build_root}/${gitlabSourceBranch}")
+print("Building Folder ${JOB_ROOT}/${gitlabSourceBranch}")
+folder("${JOB_ROOT}/${gitlabSourceBranch}")
 
 
-print("Making job - ${build_root}/${gitlabSourceBranch}/build-master")
-pipelineJob("${build_root}/${gitlabSourceBranch}/build-master") {
+print("Making job - ${JOB_ROOT}/${gitlabSourceBranch}/seed-job")
+pipelineJob("${JOB_ROOT}/${gitlabSourceBranch}/seed-job") {
 
-    def repo = 'http://gitlab.antlinux.local:30080/antman/pipeline-proto.git'
-
-    description("Pipeline for $repo")
+    description("Pipeline for ${REPO_URL}")
 
     /*parameters {
         stringParam('SOURCE_BRANCH', '', 'build this branch')
@@ -25,9 +23,9 @@ pipelineJob("${build_root}/${gitlabSourceBranch}/build-master") {
         cpsScm {
             scm {
                 git {
-                    remote { url(repo) }
+                    remote { url("${REPO_URL}") }
                     branches("${gitlabSourceBranch}")
-                    scriptPath('build-master/Jenkinsfile')
+                    scriptPath("${SCRIPT_PATH}")
                     extensions { }  // required as otherwise it may try to tag the repo, which you may not want
                 }
             }
