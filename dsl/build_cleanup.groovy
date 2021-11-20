@@ -1,19 +1,17 @@
-print("Making job - ${JOB_ROOT}/branch-cleanup")
-print("REPO_URL = ${REPO_URL}")
-pipelineJob("${JOB_ROOT}/branch-cleanup") {
+def build_root = "/pipeline-${gitlabSourceRepoName}"
 
-    description("Cleanup job for ${JOB_ROOT}")
+
+print("Making job - ${build_root}/branch-cleanup")
+print("REPO_URL = ${gitlabSourceRepoHttpUrl}")
+pipelineJob("${build_root}/branch-cleanup") {
+
+    description("Cleanup job for ${build_root}")
 
     parameters {
-        stringParam('JOB_ROOT', "${JOB_ROOT}", 'JOB_ROOT')
-        stringParam('REPO_URL', "${REPO_URL}", 'REPO_URL')
+        stringParam('JOB_ROOT', "${build_root}", 'JOB_ROOT')
+        stringParam('REPO_URL', "${gitlabSourceRepoHttpUrl}", 'REPO_URL')
     }
 
-    /*environmentVariables {
-        env('JOB_ROOT', "${JOB_ROOT}")
-        env('REPO_URL', "${REPO_URL}")
-        keepBuildVariables(true)
-    }*/
     properties {
         pipelineTriggers {
             triggers {
