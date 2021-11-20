@@ -86,6 +86,11 @@ node ()
         }
 
        print("Final Delete List: ${delete_list}")
+       delete_list.each {
+            print("Deleting: ${it.name}")
+            it.delete()
+       }
+
         /*jen.getItems().each{
             if(it instanceof Folder){
                 processFolder(it)
