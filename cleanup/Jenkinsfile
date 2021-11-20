@@ -71,11 +71,21 @@ node ()
 
         def all_root_items = root.getItems()
         //print("All Top level Jobs: ${all_root_items}")
+
+        def delete_list = []
+
         all_root_items.each {
             if(it instanceof Folder){
                 print("Folder: ${it.name}")
+                if (active_branches.contains(it.name) == false)
+                {
+                    print("Branch(${it.name}) is marked as inactive - deleting")
+                    delete_list.add(it)
+                }
             }
         }
+
+       print("Final Delete List: {delete_list}")
         /*jen.getItems().each{
             if(it instanceof Folder){
                 processFolder(it)
