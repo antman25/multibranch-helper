@@ -31,7 +31,7 @@ node()
          //def extra_params = params
          //extra_params['JOB_ROOT'] = build_root
 
-         jobDsl targets: ["dsl/build_root.groovy"].join('\n'),
+         jobDsl targets: ["dsl/build_branch.groovy"].join('\n'),
          removedJobAction: 'IGNORE',
          removedViewAction: 'IGNORE',
          lookupStrategy: 'SEED_JOB',
