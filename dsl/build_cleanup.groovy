@@ -14,8 +14,12 @@ pipelineJob("${JOB_ROOT}/branch-cleanup") {
         env('REPO_URL', "${REPO_URL}")
         keepBuildVariables(true)
     }*/
-    properties {
-        pipelineTriggers([cron('H 0 * * * ')])
+    pipelineTriggers {
+        triggers {
+            cron {
+                spec("H/5 * * * * ")
+            }
+        }
     }
 
     definition {
