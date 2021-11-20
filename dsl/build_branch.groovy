@@ -17,7 +17,7 @@ pipelineJob("${build_root}/${gitlabSourceBranch}/main-pipeline") {
                 git {
                     remote { url("${gitlabSourceRepoHttpUrl}") }
                     branches("${gitlabSourceBranch}")
-                    scriptPath("Jenkinsfile")
+                    scriptPath("${SCRIPT_PATH}")
                     extensions { }  // required as otherwise it may try to tag the repo, which you may not want
                 }
             }

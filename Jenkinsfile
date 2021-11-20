@@ -9,7 +9,7 @@ node()
     def source_branch = env.getEnvironment().getOrDefault("gitlabSourceBranch", "NOTSET")
     def build_root = "pipeline-${source_repo}"
     def script_path = params.getOrDefault("SCRIPT_PATH", "Jenkinsfile")
-    print("Using SCRIPT_PATH = ${SCRIPT_PATH}")
+    print("Using SCRIPT_PATH = ${script_path}")
 
     stage ("ENV Dump")
     {
