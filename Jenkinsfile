@@ -1,5 +1,3 @@
-@Library('jenkins-shared-lib') _
-
 node()
 {
     //print("gitlabSourceBranch = ${env.gitlabSourceBranch}")
