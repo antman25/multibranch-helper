@@ -1,4 +1,5 @@
 print("Making job - ${JOB_ROOT}/branch-cleanup")
+print("REPO_URL = ${REPO_URL}")
 pipelineJob("${JOB_ROOT}/branch-cleanup") {
 
     description("Cleanup job for ${JOB_ROOT}")
