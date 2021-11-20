@@ -77,7 +77,7 @@ node ()
         all_root_items.each {
             if(it instanceof Folder){
                 print("Folder: ${it.name}")
-                if (active_branches.contains(it.name) == false)
+                if (active_branches.contains(it.name) == false && it.name != "main")
                 {
                     print("Branch(${it.name}) is marked as inactive - deleting")
                     delete_list.add(it)
