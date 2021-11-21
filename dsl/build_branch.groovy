@@ -23,7 +23,7 @@ pipelineJob("${build_root}/${gitlabSourceBranch}/main-pipeline") {
                 git {
                     remote { url("${gitlabSourceRepoHttpUrl}") }
                     branches("${gitlabSourceBranch}")
-                    scriptPath("${test_script_path}")
+                    scriptPath("${SCRIPT_PATH}")
                     extensions { }  // required as otherwise it may try to tag the repo, which you may not want
                 }
             }
