@@ -1,9 +1,5 @@
 def build_root = "/pipeline-${gitlabSourceRepoName}"
 
-
-def test_script_path = System.getenv("SCRIPT_PATH")
-println("test_script_path: ${test_script_path}")
-
 println("Test path: ${SCRIPT_PATH}")
 
 folder("${build_root}")
