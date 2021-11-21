@@ -5,7 +5,7 @@ println("Test path: ${SCRIPT_PATH}")
 folder("${build_root}")
 folder("${build_root}/${gitlabSourceBranch}")
 pipelineJob("${build_root}/${gitlabSourceBranch}/main-pipeline") {
-
+    displayName("000 - Main Pipeline")
     description("Pipeline for ${gitlabSourceRepoName}")
 
     environmentVariables {
