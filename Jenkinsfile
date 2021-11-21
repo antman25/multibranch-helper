@@ -50,6 +50,7 @@ node()
             gitlabCommitStatus(name: "build")
             {
                 print("Sending Source Branch: ${source_branch}")
+
                 build job: "${build_root}/${gitlabSourceBranch}/main-pipeline"
                       parameters: [string(name: 'SOURCE_BRANCH', value: source_branch)]
             }
