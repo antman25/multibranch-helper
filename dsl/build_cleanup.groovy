@@ -6,7 +6,7 @@ print("REPO_URL = ${gitlabSourceRepoHttpUrl}")
 pipelineJob("${build_root}/branch-cleanup") {
 
     description("Cleanup job for ${build_root}")
-
+    displayName("000 - Clean Inactive Branches")
     parameters {
         stringParam('JOB_ROOT', "${build_root}", 'JOB_ROOT')
         stringParam('REPO_URL', "${gitlabSourceRepoHttpUrl}", 'REPO_URL')
@@ -16,7 +16,7 @@ pipelineJob("${build_root}/branch-cleanup") {
         pipelineTriggers {
             triggers {
                 cron {
-                    spec("H/2 * * * * ")
+                    spec("H/15 * * * * ")
                 }
             }
         }
