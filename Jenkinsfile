@@ -32,7 +32,7 @@ node()
         {
             gitlabCommitStatus(name: "dsl")
             {
-                 def extra_params = params
+                 def extra_params = params.clone()
                  extra_params['ACTIVE_BRANCHES'] = 'test'//git_helper.getRemoteBranches(repo)
                  print("ExtraParams: ${extra_params}")
                      jobDsl targets: ["dsl/build_branch.groovy",
