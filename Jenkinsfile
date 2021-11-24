@@ -1,3 +1,4 @@
+@Library('jenkins-shared-lib')
 node()
 {
     //print("gitlabSourceBranch = ${env.gitlabSourceBranch}")
@@ -32,16 +33,16 @@ node()
         {
             gitlabCommitStatus(name: "dsl")
             {
-                 //def extra_params = params
-                 //extra_params['JOB_ROOT'] = build_root
-                 withEnv(["ANT_VAR=${script_path}"]) {
+                 def extra_params = params
+                 extra_params['ACTIVE_BRANCHES'] = git_helper.getRemoteBranches(repo)
+                 print("ExtraParams: ${extra_params}")
                      jobDsl targets: ["dsl/build_branch.groovy",
                                       "dsl/build_cleanup.groovy"].join('\n'),
                      removedJobAction: 'IGNORE',
                      removedViewAction: 'IGNORE',
                      lookupStrategy: 'SEED_JOB',
                      additionalParameters: params
-                 }
+
             }
         }
 
