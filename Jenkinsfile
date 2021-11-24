@@ -1,11 +1,13 @@
-
 node()
 {
+    stage('asdf')
+    {
+    }
     //print("gitlabSourceBranch = ${env.gitlabSourceBranch}")
     //print("ENV = ${env.getEnvironment()}")
     //def source_branch = env.getEnvironment().getOrDefault("BRANCH_NAME", "main")
 
-    def repo = env.getEnvironment().getOrDefault("gitlabSourceRepoHttpUrl", "NOTSET")
+    /*def repo = env.getEnvironment().getOrDefault("gitlabSourceRepoHttpUrl", "NOTSET")
     def source_repo = env.getEnvironment().getOrDefault("gitlabSourceRepoName", "NOTSET")
     def source_branch = env.getEnvironment().getOrDefault("gitlabSourceBranch", "NOTSET")
     def build_root = "pipeline-${source_repo}"
@@ -56,5 +58,5 @@ node()
                       parameters: [string(name: 'SOURCE_BRANCH', value: source_branch)]
             }
         }
-    }
+    }*/
 }
