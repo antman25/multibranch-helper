@@ -40,8 +40,7 @@ node()
                  def active_branches = git_helper.getRemoteBranches(repo)
                  extra_params['ACTIVE_BRANCHES'] = active_branches.join(',')
                  //print("ExtraParams: ${extra_params}")
-                     jobDsl targets: ["dsl/build_branch.groovy",
-                                      "dsl/build_cleanup.groovy"].join('\n'),
+                     jobDsl targets: ["dsl/build_branch.groovy"].join('\n'),
                      removedJobAction: 'DELETE',
                      removedViewAction: 'DELETE',
                      lookupStrategy: 'SEED_JOB',
