@@ -43,7 +43,7 @@ node()
                      removedJobAction: 'IGNORE',
                      removedViewAction: 'IGNORE',
                      lookupStrategy: 'SEED_JOB',
-                     additionalParameters: extra_params,
+                     additionalParameters: extra_params
 
             }
         }
