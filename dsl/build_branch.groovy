@@ -3,6 +3,9 @@ def build_root = "/pipeline-${gitlabSourceRepoName}"
 println("Test path: ${SCRIPT_PATH}")
 
 folder("${build_root}")
+
+println("In Groovy dsl: ${ACTIVE_BRANCHES}")
+
 folder("${build_root}/${gitlabSourceBranch}")
 pipelineJob("${build_root}/${gitlabSourceBranch}/main-pipeline") {
     displayName("000 - Main Pipeline")

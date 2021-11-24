@@ -12,6 +12,8 @@ pipelineJob("${build_root}/branch-cleanup") {
         stringParam('REPO_URL', "${gitlabSourceRepoHttpUrl}", 'REPO_URL')
     }
 
+    disabled()
+
     properties {
         pipelineTriggers {
             triggers {
