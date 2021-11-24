@@ -6,6 +6,13 @@ folder("${build_root}")
 
 println("In Groovy dsl: ${ACTIVE_BRANCHES}")
 
+def active_branches = "${ACTIVE_BRANCHES}"
+def active_branches_split = active_branches.split(",")
+
+active_branches_split.each {
+    println("Cur Active Branch (Groovy): ${it}")
+}
+
 folder("${build_root}/${gitlabSourceBranch}")
 pipelineJob("${build_root}/${gitlabSourceBranch}/main-pipeline") {
     displayName("000 - Main Pipeline")

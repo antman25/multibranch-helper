@@ -37,7 +37,8 @@ node()
                  params.each { k,v ->
                     extra_params[k] = v
                  }
-                 extra_params['ACTIVE_BRANCHES'] = git_helper.getRemoteBranches(repo)
+                 def active_branches = git_helper.getRemoteBranches(repo)
+                 extra_params['ACTIVE_BRANCHES'] = active_branches.join(',')
                  //print("ExtraParams: ${extra_params}")
                      jobDsl targets: ["dsl/build_branch.groovy",
                                       "dsl/build_cleanup.groovy"].join('\n'),
