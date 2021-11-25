@@ -11,7 +11,6 @@ node()
     def build_root = "pipeline-${gitlabSourceRepoName}"
     def script_path = params.getOrDefault("SCRIPT_PATH", "Jenkinsfile")
 
-
     def gitlab_params = [:]
     env.getEnvironment().each { k,v ->
         if (k.startsWith('gitlab'))
@@ -46,6 +45,7 @@ node()
                  def extra_params = [:]
                  def active_branches = git_helper.getRemoteBranches(repo)
                  extra_params['ACTIVE_BRANCHES'] = active_branches.join(',')
+                 extra_params['SCRIPT_PATH'] = script_path
                  //print("ExtraParams: ${extra_params}")
                      jobDsl targets: ["dsl/build_branch.groovy"].join('\n'),
                      removedJobAction: 'DELETE',

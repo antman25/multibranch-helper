@@ -60,17 +60,17 @@ active_branches_split.each { cur_branch ->
             }
         }
 
-        environmentVariables {
+        /*environmentVariables {
             env('SOURCE_BRANCH', "${cur_branch}")
             keepBuildVariables(true)
-        }
+        }*/
 
         definition {
             cpsScm {
                 scm {
                     git {
-                        remote { url("${gitlabSourceRepoHttpUrl}") }
-                        branches("${cur_branch}")
+                        remote { url(gitlabSourceRepoHttpUrl) }
+                        branches(cur_branch)
                         scriptPath("${SCRIPT_PATH}")
                         extensions { }  // required as otherwise it may try to tag the repo, which you may not want
                     }
