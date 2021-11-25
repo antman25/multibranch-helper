@@ -2,7 +2,7 @@
     [
         parameters(
             [string(defaultValue: 'branch_name', name: 'gitlabSourceBranch'),
-             string(defaultValue: 'repo', name: 'getlabSourceRepo')]
+             string(defaultValue: 'repo', name: 'gitlabSourceRepo')]
             )
 
     ]
