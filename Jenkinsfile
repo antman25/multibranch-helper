@@ -28,7 +28,7 @@ node()
         print("Source Branch: ${gitlabSourceBranch}")
         print("Using SCRIPT_PATH = ${script_path}")
     }
-    gitlabBuilds(builds: ["git", "dsl","test", "build"]) {
+    gitlabBuilds(builds: ["git", "branch","main-pipeline"]) {
 
         stage('Git Clone')
         {
@@ -41,7 +41,7 @@ node()
 
         stage ('JobDSL')
         {
-            gitlabCommitStatus(name: "dsl")
+            gitlabCommitStatus(name: "branch")
             {
                  def extra_params = [:]
                  def active_branches = git_helper.getRemoteBranches(repo)
@@ -58,7 +58,7 @@ node()
 
         stage('Run Pipeline')
         {
-            gitlabCommitStatus(name: "build")
+            gitlabCommitStatus(name: "main-pipeline")
             {
                 print("Sending Source Branch: ${gitlabSourceBranch}")
                 def extra_params = []
