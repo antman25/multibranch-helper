@@ -13,5 +13,6 @@ node()
     stage('ENV')
     {
         sh("env | sort -n")
+        print("Params: ${params}")
     }
 }
