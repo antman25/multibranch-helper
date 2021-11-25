@@ -54,9 +54,16 @@ node()
             gitlabCommitStatus(name: "build")
             {
                 print("Sending Source Branch: ${source_branch}")
+                def extra_params = []
+                params.each { k,v ->
+                    if (k.startWith('gitlab'))
+                    {
+                        extra_params.append(string(name: k, value: v))
+                    }
+                 }
 
                 build job: "${build_root}/${gitlabSourceBranch}/main-pipeline"
-                      parameters: [string(name: 'SOURCE_BRANCH', value: source_branch)]
+                      parameters: extra_params
             }
         }
     }
