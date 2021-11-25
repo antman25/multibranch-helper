@@ -4,7 +4,7 @@ println("script path: ${script_path}")
 
 folder("${build_root}")
 
-println("In Groovy dsl: ${active_Branches}")
+println("In Groovy dsl: ${active_branches}")
 
 //def active_branches = "${ACTIVE_BRANCHES}"
 def active_branches_split = active_branches.split(",")
