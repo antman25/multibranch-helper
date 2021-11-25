@@ -63,7 +63,7 @@ node()
                 print("Sending Source Branch: ${gitlabSourceBranch}")
                 def extra_params = []
                 gitlab_params.each { k,v ->
-                    extra_params.append(string(name: k, value: v))
+                    extra_params.add(string(name: k, value: v))
                  }
 
                 build job: "${build_root}/${gitlabSourceBranch}/main-pipeline"
