@@ -43,7 +43,7 @@ node()
         {
             gitlabCommitStatus(name: "dsl")
             {
-                 def extra_params [:]
+                 def extra_params = [:]
                  def active_branches = git_helper.getRemoteBranches(repo)
                  extra_params['ACTIVE_BRANCHES'] = active_branches.join(',')
                  //print("ExtraParams: ${extra_params}")
