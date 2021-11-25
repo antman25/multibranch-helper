@@ -56,7 +56,7 @@ node()
                 print("Sending Source Branch: ${source_branch}")
                 def extra_params = []
                 params.each { k,v ->
-                    if (k.startWith('gitlab'))
+                    if (k.startsWith('gitlab'))
                     {
                         extra_params.append(string(name: k, value: v))
                     }
