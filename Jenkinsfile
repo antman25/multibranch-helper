@@ -65,11 +65,9 @@ node()
                 gitlab_params.each { k,v ->
                     extra_params.add(string(name: k, value: v))
                 }
-                withEnv(['Test=blah'])
-                {
-                    build job: "${build_root}/${gitlabSourceBranch}/main-pipeline"
-                                          parameters: extra_params
-                }
+
+                build job: "${build_root}/${gitlabSourceBranch}/main-pipeline"
+                                      parameters: extra_params
 
             }
         }
