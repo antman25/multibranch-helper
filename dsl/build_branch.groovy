@@ -36,6 +36,24 @@ active_branches_split.each { cur_branch ->
         gitlabUserUsername=antman
          */
 
+        parameters {
+            stringParam('gitlabActionType', '')
+            stringParam('gitlabAfter', '')
+            stringParam('gitlabBefore', '')
+            stringParam('gitlabBranch', '')
+            stringParam('gitlabMergeRequestLastCommit', '')
+            stringParam('gitlabSourceBranch', '')
+            stringParam('gitlabSourceNamespace', '')
+            stringParam('gitlabSourceRepoHomepage', '')
+            stringParam('gitlabSourceRepoHttpUrl', '')
+            stringParam('gitlabSourceRepoName', '')
+            stringParam('gitlabSourceRepoSshUrl', '')
+            stringParam('gitlabSourceRepoURL', '')
+            stringParam('gitlabTargetBranch', '')
+            stringParam('gitlabUserName', '')
+            stringParam('gitlabUserUsername', '')
+        }
+
         environmentVariables {
             env('SOURCE_BRANCH', "${cur_branch}")
             keepBuildVariables(true)

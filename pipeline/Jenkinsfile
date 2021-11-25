@@ -1,4 +1,4 @@
-  properties(
+  /*properties(
     [
         parameters(
             [string(defaultValue: 'branch_name', name: 'gitlabSourceBranch'),
@@ -6,7 +6,7 @@
             )
 
     ]
-)
+)*/
 
 node()
 {
