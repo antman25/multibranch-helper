@@ -28,7 +28,7 @@ node()
         print("Source Branch: ${gitlabSourceBranch}")
         print("Using SCRIPT_PATH = ${script_path}")
     }
-    gitlabBuilds(builds: ["git", "dsl","build"]) {
+    gitlabBuilds(builds: ["git", "dsl","test", "build"]) {
 
         stage('Git Clone')
         {
