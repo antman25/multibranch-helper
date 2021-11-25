@@ -14,6 +14,10 @@ node()
     {
         sh("env | sort -n")
         print("Params: ${params}")
-
     }
+    gitlabCommitStatus(name: "test")
+    {
+        print("TEst Build Status Sent")
+    }
+
 }
