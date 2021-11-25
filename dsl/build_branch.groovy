@@ -54,6 +54,12 @@ active_branches_split.each { cur_branch ->
             stringParam('gitlabUserUsername', String.valueOf(gitlabUserUsername))
         }
 
+        properties {
+            gitLabConnectionProperty {
+                gitLabConnection "gitlab1"
+            }
+        }
+
         environmentVariables {
             env('SOURCE_BRANCH', "${cur_branch}")
             keepBuildVariables(true)
