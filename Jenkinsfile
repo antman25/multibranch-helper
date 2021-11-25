@@ -44,8 +44,8 @@ node()
             {
                  def extra_params = [:]
                  def active_branches = git_helper.getRemoteBranches(repo)
-                 extra_params['ACTIVE_BRANCHES'] = active_branches.join(',')
-                 extra_params['SCRIPT_PATH'] = script_path
+                 extra_params['active_branches'] = active_branches.join(',')
+                 extra_params['script_path'] = script_path
                  //print("ExtraParams: ${extra_params}")
                      jobDsl targets: ["dsl/build_branch.groovy"].join('\n'),
                      removedJobAction: 'DELETE',

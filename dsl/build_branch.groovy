@@ -1,12 +1,12 @@
 def build_root = "/pipeline-${gitlabSourceRepoName}"
 
-println("Test path: ${SCRIPT_PATH}")
+println("script path: ${script_path}")
 
 folder("${build_root}")
 
-println("In Groovy dsl: ${ACTIVE_BRANCHES}")
+println("In Groovy dsl: ${active_Branches}")
 
-def active_branches = "${ACTIVE_BRANCHES}"
+//def active_branches = "${ACTIVE_BRANCHES}"
 def active_branches_split = active_branches.split(",")
 
 active_branches_split.each { cur_branch ->
@@ -52,7 +52,7 @@ active_branches_split.each { cur_branch ->
                     git {
                         remote { url(gitlabSourceRepoHttpUrl) }
                         branches(cur_branch)
-                        scriptPath("${SCRIPT_PATH}")
+                        scriptPath(script_path)
                         extensions { }  // required as otherwise it may try to tag the repo, which you may not want
                     }
                 }
