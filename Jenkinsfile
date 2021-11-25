@@ -38,7 +38,7 @@ node()
         }
 
 
-        stage ('JobDSL')
+        stage ('Build Branch Jobs')
         {
             //gitlabCommitStatus(name: "branch")
             //{
