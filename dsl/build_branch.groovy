@@ -75,7 +75,6 @@ active_branches_split.each { cur_branch ->
 }
 
 
-
 /*folder("${build_root}/${gitlabSourceBranch}")
 pipelineJob("${build_root}/${gitlabSourceBranch}/main-pipeline") {
     displayName("000 - Main Pipeline")
