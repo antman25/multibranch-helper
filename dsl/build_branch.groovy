@@ -37,7 +37,7 @@ active_branches_split.each { cur_branch ->
          */
 
         parameters {
-            stringParam('gitlabActionType', '')
+            stringParam('gitlabActionType', String.valueOf(gitlabActionType))
             stringParam('gitlabAfter', '')
             stringParam('gitlabBefore', '')
             stringParam('gitlabBranch', '')
