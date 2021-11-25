@@ -27,21 +27,21 @@ node()
         print("Source Branch: ${gitlabSourceBranch}")
         print("Using SCRIPT_PATH = ${script_path}")
     }
-    gitlabBuilds(builds: ["git", "branch","main-pipeline"]) {
+    gitlabBuilds(builds: ["main-pipeline"]) {
 
         stage('Git Clone')
         {
-            gitlabCommitStatus(name: "git")
-            {
+            //gitlabCommitStatus(name: "git")
+            //{
                 checkout scm
-            }
+            //}
         }
 
 
         stage ('JobDSL')
         {
-            gitlabCommitStatus(name: "branch")
-            {
+            //gitlabCommitStatus(name: "branch")
+            //{
                  def extra_params = [:]
                  def active_branches = git_helper.getRemoteBranches(repo)
                  extra_params['active_branches'] = active_branches.join(',')
@@ -53,7 +53,7 @@ node()
                      lookupStrategy: 'SEED_JOB',
                      additionalParameters: gitlab_params + extra_params
 
-            }
+            //}
         }
 
         stage('Run Pipeline')
